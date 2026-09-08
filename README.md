@@ -107,24 +107,29 @@ Pre-built binaries for **Linux x86_64** are available in the [**GitHub Releases*
 
 ## 🛠️ Building from Source
 
-### Prerequisites (Debian / Ubuntu / Pop!_OS)
+### Prerequisites (Debian / Ubuntu / Linux Mint)
 ```bash
 sudo apt-get update
-sudo apt-get install -y build-essential libasound2-dev libjack-jackd2-dev \
-    libfreetype6-dev libx11-dev libxcomposite-dev libxcursor-dev libxinerama-dev \
-    libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev
+sudo apt-get install -y build-essential libasound2-dev libfreetype6-dev \
+    libx11-dev libxinerama-dev libxext-dev libfontconfig1-dev libcurl4-openssl-dev \
+    libgl1-mesa-dev libgtk-3-dev pkg-config
 ```
 
 ### Compiling
 ```bash
 git clone https://github.com/letsdig/OpenSynth1.git
-cd OpenSynth1/Builds/LinuxMakefile
+cd OpenSynth1
+
+# Clone the JUCE framework if not already installed:
+git clone --depth 1 https://github.com/juce-framework/JUCE.git ../JUCE
+
+cd Builds/LinuxMakefile
 make CONFIG=Release -j$(nproc)
 ```
 
 The compiled binaries will be located in `Builds/LinuxMakefile/build/`:
-* `OpenSynth1.vst3`
-* `OpenSynth1` (Standalone)
+* `OpenSynth1.vst3` (VST3 bundle, copy to `~/.vst3/`)
+* `OpenSynth1` (Standalone executable)
 
 ---
 
