@@ -1,0 +1,27 @@
+# Compiled binaries and build directories
+Builds/LinuxMakefile/build/
+intermediate/
+*.o
+*.d
+*.a
+*.so
+*.vst3
+
+# Release distribution archives
+releases/
+*.tar.gz
+*.zip
+
+# Reference documents and manuals (excluded from repo)
+*.pdf
+synth1_manual.txt
+reddit_post.md
+
+# IDE and OS artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*~
+*.swp
+.tempmediaStorage/
