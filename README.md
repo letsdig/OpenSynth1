@@ -80,6 +80,34 @@ Pre-built binaries for **Linux x86_64** are available in the [**GitHub Releases*
 
 *(Also available as `.zip` archives)*
 
+### 🖥️ System Requirements
+
+The pre-built binaries are compiled on **Ubuntu 22.04** and require **glibc ≥ 2.35**.
+
+This covers:
+- Ubuntu 22.04 LTS (Jammy) and later
+- Debian 12 (Bookworm) and later
+- Linux Mint 21 and later
+- Fedora 36 and later
+- Most distros released after 2022
+
+**Not sure which glibc version you have?** Run this in your terminal:
+
+```bash
+ldd --version | head -n 1
+```
+
+Example output:
+```
+ldd (GNU libc) 2.36
+```
+
+If the number shown is **≥ 2.35** → you're good to go ✅
+
+If it's **< 2.35** → 🫏 you'll need to build from source (see below) or upgrade your distro.
+
+---
+
 ### 📦 Installation (Linux)
 
 #### VST3 Plugin:
