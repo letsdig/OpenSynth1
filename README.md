@@ -104,7 +104,7 @@ ldd (GNU libc) 2.36
 
 If the number shown is **≥ 2.35** → you're good to go ✅
 
-If it's **< 2.35** → 🫏 **BRUTTO SOMARO** you'll need to build from source (see below) or upgrade your distro — instead of harassing the creator with kids vibe coding jokes.
+If it's **< 2.35 and not working** → 🫏 **BRUTTO SOMARO** you'll need to build from source (see below) or upgrade your distro — instead of harassing the creator with kids vibe coding jokes.
 
 ---
 
