@@ -113,7 +113,7 @@ private:
                               (2.0 * sampleRate));
     F = juce::jlimit(0.0001, 1.414, F);
 
-    double fMul = 1.0 - 0.7 * fRes;
+    double fMul = 1.0 - 0.35 * fRes;
     double R = fRes - 1.0;
 
     double xIn = inSample * fMul;
@@ -196,7 +196,10 @@ private:
       }
     }
 
-    return lp24S[3];
+    // Passband gain compensation: 4-pole cascaded filters naturally drop in volume
+    // as resonance increases. Compensate so resonant presets retain punch and body.
+    double resComp = 1.0 + 0.5 * fRes;
+    return lp24S[3] * resComp;
   }
 
   // =========================================================================

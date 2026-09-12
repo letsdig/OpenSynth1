@@ -390,6 +390,7 @@ Synth1Voice::Synth1Voice(juce::AudioProcessorValueTreeState &apvts,
   ampRelease = apvts.getRawParameterValue("28");
   ampGain = apvts.getRawParameterValue("29");
   ampVel = apvts.getRawParameterValue("30");
+  arpOn = apvts.getRawParameterValue("59");
   lfo1On = apvts.getRawParameterValue("57");
   lfo1Dest = apvts.getRawParameterValue("41");
   lfo1Type = apvts.getRawParameterValue("42");
@@ -1278,19 +1279,21 @@ void Synth1Voice::renderNextBlock(juce::AudioBuffer<float> &outputBuffer,
 
     float ampEnvVal = ampAdsr.getNextSample();
 
-    // --- GAIN TAPER QUADRATICO CORRETTO (+6dB max) ---
+    // --- MUSICAL GAIN TAPER & ARPEGGIATOR BALANCING ---
     float rawAmpGain = (ampGain != nullptr) ? ampGain->load() : 107.0f;
     float gainVal = 0.0f;
     if (rawAmpGain > 0.001f) {
       float normGain = rawAmpGain / 127.0f;
-      gainVal = std::pow(normGain, 2.0f) * 2.0f;
+      gainVal = std::pow(normGain, 1.35f) * 1.85f;
     }
 
     float voicePan = juce::jlimit(0.0f, 1.0f, 0.5f + lfoPanMod);
     float pL = std::cos(voicePan * juce::MathConstants<float>::halfPi);
     float pR = std::sin(voicePan * juce::MathConstants<float>::halfPi);
 
-    float commonGain = level * ampEnvVal * lfoAmpMod * gainVal * 0.45f;
+    bool isArpActive = (arpOn != nullptr && arpOn->load() > 0.5f);
+    float arpGainBoost = isArpActive ? 1.35f : 1.0f; // Compensates for single-voice vs polyphonic chords
+    float commonGain = level * ampEnvVal * lfoAmpMod * gainVal * 0.45f * arpGainBoost;
     float finalSampleL = filteredL * commonGain * pL;
     float finalSampleR = filteredR * commonGain * pR;
 
@@ -1533,6 +1536,9 @@ void OpenSynth1AudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
       auto msg = metadata.getMessage();
       if (msg.isNoteOn()) {
         int note = msg.getNoteNumber();
+        int vel = msg.getVelocity();
+        if (vel > 0)
+          arpLastVelocity = (juce::uint8)juce::jlimit(1, 127, vel);
         bool wasEmpty = arpHeldKeys.empty();
         if (std::find(arpHeldKeys.begin(), arpHeldKeys.end(), note) ==
             arpHeldKeys.end()) {
@@ -1624,7 +1630,7 @@ void OpenSynth1AudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
             }
 
             synthMidi.addEvent(
-                juce::MidiMessage::noteOn(1, note, (juce::uint8)100), smp);
+                juce::MidiMessage::noteOn(1, note, arpLastVelocity), smp);
             arpNotePlaying = note;
             arpGateSamplesRemaining = gateLen;
           }
@@ -2473,6 +2479,11 @@ void OpenSynth1AudioProcessor::loadSy1Preset(const juce::File &presetFile) {
           val = (val >= 1 && val <= 4) ? (val - 1) : juce::jlimit(0, 3, val);
         } else if (idStr == "35") {
           val = juce::jlimit(0, 19, val);
+        } else if (idStr == "33") {
+          if (val > 18)
+            val = juce::jlimit(0, 18, (int)std::round((float)val / 127.0f * 18.0f));
+          else
+            val = juce::jlimit(0, 18, val);
         }
 
         float normalizedValue = rParam->getNormalisableRange().convertTo0to1(

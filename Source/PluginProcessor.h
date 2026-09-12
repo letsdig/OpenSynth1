@@ -240,6 +240,7 @@ private:
   std::atomic<float> *ampRelease = nullptr;
   std::atomic<float> *ampGain = nullptr;
   std::atomic<float> *ampVel = nullptr;
+  std::atomic<float> *arpOn = nullptr;
 
   std::atomic<float> *lfo1On = nullptr;
   std::atomic<float> *lfo1Dest = nullptr;
@@ -440,6 +441,7 @@ private:
   double arpStepCounter = 0.0;
   int arpNotePlaying = -1;
   int arpGateSamplesRemaining = 0;
+  juce::uint8 arpLastVelocity = 115;
   std::atomic<float> currentHostBpm{120.0f};
   std::atomic<bool> presetLoadedFlag{false};
 

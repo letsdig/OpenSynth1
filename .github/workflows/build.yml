@@ -58,11 +58,13 @@ jobs:
           mkdir -p dist
           cp Builds/LinuxMakefile/build/OpenSynth1 dist/
           cp -r Builds/LinuxMakefile/build/OpenSynth1.vst3 dist/
+          cp -r soundbank dist/
           strip --strip-unneeded dist/OpenSynth1
           strip --strip-unneeded dist/OpenSynth1.vst3/Contents/x86_64-linux/OpenSynth1.so
           cd dist
-          tar -czvf OpenSynth1-Linux-x86_64-standalone.tar.gz OpenSynth1
-          tar -czvf OpenSynth1-Linux-x86_64-vst3.tar.gz OpenSynth1.vst3
+          tar -czvf OpenSynth1-Linux-x86_64-standalone.tar.gz OpenSynth1 soundbank
+          tar -czvf OpenSynth1-Linux-x86_64-vst3.tar.gz OpenSynth1.vst3 soundbank
+          tar -czvf OpenSynth1-Factory-Soundbank.tar.gz soundbank
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
@@ -78,5 +80,6 @@ jobs:
           files: |
             dist/OpenSynth1-Linux-x86_64-standalone.tar.gz
             dist/OpenSynth1-Linux-x86_64-vst3.tar.gz
+            dist/OpenSynth1-Factory-Soundbank.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -4,7 +4,7 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginFormats="buildStandalone,buildVST3"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn" pluginName="OpenSynth1"
               pluginDesc="OpenSynth1 Tribute Synthesizer" bundleIdentifier="org.opensynth1.OpenSynth1"
-              version="1.2.0" pluginVersion="1.2.0">
+              version="1.2.1" pluginVersion="1.2.1">
   <MAINGROUP id="hrCy63" name="OpenSynth1">
     <GROUP id="{F931C426-76E2-4234-8E2C-C13EF2F0070E}" name="Source">
       <FILE id="aZwVGz" name="PluginProcessor.cpp" compile="1" resource="0"
