@@ -12,6 +12,10 @@ releases/
 *.tar.gz
 *.zip
 
+# Project artifacts to move out of the repository root
+# and keep excluded from normal git publication.
+garbage/
+
 # Reference documents and manuals (excluded from repo)
 *.pdf
 synth1_manual.txt
