@@ -44,7 +44,7 @@
  #define JucePlugin_Name                   "OpenSynth1"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "OpenSynth1 Virtual Analog Synthesizer"
+ #define JucePlugin_Desc                   "OpenSynth1 Tribute Synthesizer"
 #endif
 #ifndef  JucePlugin_Manufacturer
  #define JucePlugin_Manufacturer           "yourcompany"

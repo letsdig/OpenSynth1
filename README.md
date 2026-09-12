@@ -1,6 +1,6 @@
 # OpenSynth1
 
-> **OpenSynth1** is a tribute-focused virtual-analog / FM synthesizer plugin and standalone app with its own DSP shaping, UI, preset handling, and ADSR behaviour. It is inspired by the classic Synth1 workflow and the Nord Lead 2 feel, but it is not a byte-for-byte clone of Daichi Laboratory's original Synth1.
+> **OpenSynth1** is a tribute-focused synthesizer plugin and standalone app with its own DSP shaping, UI, preset handling, and ADSR behaviour. It is inspired by the classic Synth1 workflow and the Nord Lead 2 feel, but it is not a byte-for-byte clone of Daichi Laboratory's original Synth1.
 
 ![OpenSynth1 Preview](assets/screenshot_01_main_ui.png)
 
