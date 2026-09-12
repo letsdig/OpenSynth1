@@ -44,6 +44,6 @@ namespace ProjectInfo
     const char* const  projectName    = "OpenSynth1";
     const char* const  companyName    = "";
     const char* const  versionString  = "1.2.0";
-    const int          versionNumber  = 0x12000;
+    const int          versionNumber  = 0x10200;
 }
 #endif

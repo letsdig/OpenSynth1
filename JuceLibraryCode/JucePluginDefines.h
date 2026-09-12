@@ -80,7 +80,7 @@
  #define JucePlugin_Version                1.2.0
 #endif
 #ifndef  JucePlugin_VersionCode
- #define JucePlugin_VersionCode            0x12000
+ #define JucePlugin_VersionCode            0x10200
 #endif
 #ifndef  JucePlugin_VersionString
  #define JucePlugin_VersionString          "1.2.0"
@@ -158,7 +158,7 @@
  #define JucePlugin_ARAFactoryID           "com.yourcompany.OpenSynth1.factory"
 #endif
 #ifndef  JucePlugin_ARADocumentArchiveID
- #define JucePlugin_ARADocumentArchiveID   "com.yourcompany.OpenSynth1.aradocumentarchive.1.0.0"
+ #define JucePlugin_ARADocumentArchiveID   "com.yourcompany.OpenSynth1.aradocumentarchive.1.2.0"
 #endif
 #ifndef  JucePlugin_ARACompatibleArchiveIDs
  #define JucePlugin_ARACompatibleArchiveIDs  ""
