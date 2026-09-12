@@ -6,6 +6,8 @@
 
 > This repository is a tribute project for the Synth1 aesthetic and sound architecture, with a custom ADSR implementation that intentionally differs from the original Synth1 mapping when loading existing bank presets. The ADSR curve and timing are tweaked for a more pronounced, personal attack / release response.
 
+> Preset files may load, but they will not sound identical to the original Synth1 because the envelope timing, ADSR behavior, and voice shaping here are intentionally differentiated for a tribute-oriented implementation.
+
 > The project codebase and DSP/UI scaffolding were written with AI-assisted development tooling, and this repository is framed as an independent tribute project rather than a direct decompilation or exact clone of Daichi Laboratory's original Synth1.
 
 ---
