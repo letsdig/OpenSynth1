@@ -8,7 +8,8 @@ namespace {
 juce::File getOpenSynth1PreferencesFolder() {
   auto appData = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory);
   auto prefFolder = appData.getChildFile("OpenSynth1");
-  prefFolder.createDirectories();
+  if (!prefFolder.exists())
+    prefFolder.createDirectory();
   return prefFolder;
 }
 
@@ -37,7 +38,8 @@ juce::String readSavedBankDirectory() {
 void writeSavedBankDirectory(const juce::File &dir) {
   auto prefFile = getOpenSynth1PreferencesFile();
   auto prefFolder = prefFile.getParentDirectory();
-  prefFolder.createDirectories();
+  if (!prefFolder.exists())
+    prefFolder.createDirectory();
 
   juce::String text = "soundbankDirectory=" + dir.getFullPathName() + "\n";
   prefFile.replaceWithText(text);
@@ -742,13 +744,15 @@ void Synth1Voice::updateEnvelopes() {
   auto mapTime = [](float p) -> float {
     float norm = juce::jlimit(0.0f, 127.0f, p) / 127.0f;
     if (norm < 0.001f)
-      return 0.0001f; // ~0.1ms minimo
+      return 0.005f; // spazio minimo sicuro, non sotto un campione
     if (norm <= 0.5f) {
       float t = norm / 0.5f;
-      return 0.0001f * std::pow(10000.0f, t); // 0.1ms -> 1s
+      float seconds = 0.005f * std::pow(200.0f, t); // 5ms -> 1s
+      return juce::jlimit(0.005f, 1.0f, seconds);
     } else {
       float t = (norm - 0.5f) / 0.5f;
-      return 1.0f * std::pow(15.0f, t); // 1s -> 15s
+      float seconds = 1.0f * std::pow(6.0f, t); // 1s -> 6s
+      return juce::jlimit(0.005f, 6.0f, seconds);
     }
   };
 
