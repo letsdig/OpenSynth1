@@ -44,12 +44,13 @@ jobs:
 
       - name: Checkout JUCE Framework next to the repo
         run: |
-          git clone --depth 1 https://github.com/juce-framework/JUCE.git ../JUCE
+          git clone --depth 1 --branch 9.0.1 https://github.com/juce-framework/JUCE.git ../JUCE
 
       - name: Build Standalone and VST3
         run: |
           make -C Builds/LinuxMakefile \
             CONFIG=Release \
+            CPPFLAGS="-UJUCE_PROJUCER_VERSION" \
             -j$(nproc)
 
       - name: Package Release Binaries

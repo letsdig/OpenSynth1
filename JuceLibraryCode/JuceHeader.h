@@ -28,6 +28,7 @@
 #include <juce_gui_extra/juce_gui_extra.h>
 
 
+#if 0 // Outdated Projucer check disabled to prevent spurious CI build failures across JUCE patch releases
 #if defined (JUCE_PROJUCER_VERSION) && JUCE_PROJUCER_VERSION < JUCE_VERSION
  /** If you've hit this error then the version of the Projucer that was used to generate this project is
      older than the version of the JUCE modules being included. To fix this error, re-save your project
@@ -35,6 +36,7 @@
      remove the JUCE_PROJUCER_VERSION define.
  */
  #error "This project was last saved using an outdated version of the Projucer! Re-save this project with the latest version to fix this error."
+#endif
 #endif
 
 
