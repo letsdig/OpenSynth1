@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include "QuickOptionPicker.h"
 #include <vector>
 #include <memory>
 
@@ -508,9 +509,9 @@ inline juce::String getArpBeatString(int val)
     static const char* beats[] = {
         "1", "1/2.", "1/2", "1/2T", "1/4.", "1/4", "1/4T",
         "1/8.", "1/8", "1/8T", "1/16.", "1/16", "1/16T",
-        "1/32.", "1/32", "1/32T", "1/64"
+        "1/32.", "1/32", "1/32T", "1/64", "1/64T", "1/128"
     };
-    int idx = juce::jlimit(0, 16, (int)std::round((float)val / 127.0f * 16.0f));
+    int idx = (val <= 18) ? juce::jlimit(0, 18, val) : juce::jlimit(0, 18, (int)std::round((float)val / 127.0f * 18.0f));
     return beats[idx];
 }
 
@@ -885,12 +886,19 @@ private:
     std::function<void()> closeCallback;
 
     juce::ComboBox bankCombo;
-    juce::ComboBox programCombo;
+    juce::TextButton programPickerBtn;  // opens a QuickOptionPicker over all 128 slots
+    juce::Label programSlotLabel;       // shows what's currently in the chosen slot
+    int selectedProgramIndex = 1;       // 1-based, matches Synth1ProgramInfo::index
     juce::TextEditor nameEditor;
     juce::ComboBox colorCombo;
     juce::TextButton okButton;
     juce::TextButton cancelButton;
     juce::TextButton closeButton;
+
+    // Rebuilds the 128 program-slot names for whichever bank is currently
+    // selected in bankCombo, e.g. "014: Fat Bass" or "014: (empty)".
+    juce::StringArray buildProgramSlotItems() const;
+    void refreshProgramSlotUi();
 };
 
 class OpenSynth1AudioProcessorEditor;
@@ -916,6 +924,7 @@ public:
         OpenSynth1AudioProcessor& processor;
         OpenSynth1AudioProcessorEditor* editor = nullptr;
         juce::TextEditor bankPathEditor;
+        juce::TextButton copyPathBtn;
         juce::TextButton browseBankBtn;
         juce::Slider tuneSlider;
         juce::TextButton minusTuneBtn;
