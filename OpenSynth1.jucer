@@ -3,7 +3,7 @@
 <JUCERPROJECT id="dRpj1c" name="OpenSynth1" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginFormats="buildStandalone,buildVST3"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn" pluginName="OpenSynth1"
-              pluginDesc="OpenSynth1 Virtual Analog Synthesizer" bundleIdentifier="org.opensynth1.OpenSynth1">
+              pluginDesc="OpenSynth1 Tribute Synthesizer" bundleIdentifier="org.opensynth1.OpenSynth1">
   <MAINGROUP id="hrCy63" name="OpenSynth1">
     <GROUP id="{F931C426-76E2-4234-8E2C-C13EF2F0070E}" name="Source">
       <FILE id="aZwVGz" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -15,6 +15,8 @@
       <FILE id="iybeFt" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="BWgBnd" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="qOpcpp" name="QuickOptionPicker.cpp" compile="1" resource="0" file="Source/QuickOptionPicker.cpp"/>
+      <FILE id="qOphhh" name="QuickOptionPicker.h" compile="0" resource="0" file="Source/QuickOptionPicker.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
