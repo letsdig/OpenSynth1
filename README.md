@@ -160,6 +160,23 @@ The compiled binaries will be located in `Builds/LinuxMakefile/build/`:
 * `OpenSynth1.vst3` (VST3 bundle, copy to `~/.vst3/`)
 * `OpenSynth1` (Standalone executable)
 
+### 🍎 macOS quick build note
+This repository currently ships the Linux makefile exporter in the JUCE project file, so the committed build path is Linux-first. If you want a local macOS build, the simplest route is to use JUCE Projucer and export an Xcode project locally:
+
+```bash
+xcode-select --install
+brew install git cmake
+
+git clone https://github.com/letsdig/OpenSynth1.git
+cd OpenSynth1
+git clone --depth 1 https://github.com/juce-framework/JUCE.git ../JUCE
+
+# open JUCE Projucer and load OpenSynth1.jucer
+# then add/export an Xcode target and build the Release scheme
+```
+
+On macOS you can create the Xcode project from the Projucer UI, then open the generated `.xcodeproj` and press Build in Release mode. The resulting plugin/standalone bundle can then be copied to the usual mac VST3 or AU folders.
+
 ---
 
 ## 📜 Credits & Disclaimer
