@@ -12,9 +12,9 @@
 
 ---
 
-## ✨ Features
+## Features
 
-### 🎛 Oscillators & Sound Generation
+### Oscillators & Sound Generation
 * **Oscillator 1**:
   * Waveforms: **Sine**, **Saw**, **Pulse** (with variable pulse width and PW modulation), and **Triangle**.
   * **Sub-Oscillator**: 1 or 2 octaves below Osc 1 for massive sub-bass weight.
@@ -28,7 +28,7 @@
 * **Oscillator Modulation Envelope**:
   * Dedicated Pitch/Mod envelope with variable Attack/Decay and depth routing to Osc 2 Pitch or FM.
 
-### 🎚 Multi-Mode Filter
+### Multi-Mode Filter
 * **Filter Types**:
   * 24 dB/oct Low Pass (Warm ladder-style response)
   * 12 dB/oct Low Pass
@@ -37,7 +37,7 @@
 * Filter controls: Cutoff, Resonance, Saturation (drive), and Keyboard tracking.
 * Dedicated **Filter ADSR Envelope** with bipolar envelope amount (-64 to +63).
 
-### ⚡ Modulation & Envelopes
+### Modulation & Envelopes
 * **Dual LFOs (LFO 1 & LFO 2)**:
   * Waveforms: Triangle, Saw Down, Square, Random (Sample & Hold).
   * Tempo sync to host / internal BPM with musical beat divisions (`1/1`, `1/2`, `1/4`, `1/8`, `1/16`, triplets, dotted), or free running frequency in Hz.
@@ -48,7 +48,7 @@
   * Full **Amp ADSR Envelope**.
   * Gain and Velocity Sensitivity control.
 
-### 🎹 Voice Architecture & Performance
+### Voice Architecture & Performance
 * Up to **32-voice polyphony**.
 * Play modes: **Poly**, **Mono**, and **Legato** (with legato glide).
 * **Unison**: Multi-voice stacking with adjustable detune and stereo spread.
@@ -57,20 +57,20 @@
   * Modes: Up, Down, Up/Down, Random.
   * Beat sync (1/4 to 1/32, dotted & triplets), Octave range (1 to 4 octaves), and Gate length.
 
-### 🔊 Built-in Studio Effects
+### Built-in Studio Effects
 * **Stereo Delay**: Host BPM sync, feedback, wet/dry mix.
 * **Chorus / Flanger**: Depth, rate, and feedback for lush stereo widening.
 * **Distortion / Overdrive**: Analog saturation for added bite and harmonics.
 * **Tone / EQ**: Two-band shelving tone control.
 
-### 💾 Preset Compatibility
+### Preset Compatibility
 * **Full .sy1 format compatibility**: Can import and export original Synth1 bank `.sy1` preset files!
 * Built-in preset browser and program selector.
 * Options dialog for customizing color schemes and global settings.
 
 ---
 
-## 🚀 Releases & Downloads
+## Releases & Downloads
 
 Pre-built binaries for **Linux x86_64** are available in the [**GitHub Releases**](https://github.com/letsdig/OpenSynth1/releases) section:
 
@@ -81,7 +81,7 @@ Pre-built binaries for **Linux x86_64** are available in the [**GitHub Releases*
 
 *(Also available as `.zip` archives)*
 
-### 🖥️ System Requirements
+### System Requirements
 
 The pre-built binaries are compiled on **Ubuntu 22.04** and require **glibc ≥ 2.35**.
 
@@ -109,7 +109,7 @@ If it's **< 2.35 and not working** → 🫏 **BRUTTO SOMARO** you'll need to bui
 
 ---
 
-### 📦 Installation (Linux)
+### Installation (Linux)
 
 #### VST3 Plugin:
 1. Download `OpenSynth1-Linux-x86_64-vst3.tar.gz` from the Releases page.
@@ -134,7 +134,7 @@ If it's **< 2.35 and not working** → 🫏 **BRUTTO SOMARO** you'll need to bui
 
 ---
 
-## 🛠️ Building from Source
+## Building from Source
 
 ### Prerequisites (Debian / Ubuntu / Linux Mint)
 ```bash
@@ -160,7 +160,7 @@ The compiled binaries will be located in `Builds/LinuxMakefile/build/`:
 * `OpenSynth1.vst3` (VST3 bundle, copy to `~/.vst3/`)
 * `OpenSynth1` (Standalone executable)
 
-### 🍎 macOS quick build note
+### macOS quick build note
 This repository currently ships the Linux makefile exporter in the JUCE project file, so the committed build path is Linux-first. If you want a local macOS build, the simplest route is to use JUCE Projucer and export an Xcode project locally:
 
 ```bash
@@ -179,7 +179,7 @@ On macOS you can create the Xcode project from the Projucer UI, then open the ge
 
 ---
 
-## 📜 Credits & Disclaimer
+## Credits & Disclaimer
 * Inspired by **Ichiro Toda** (Daichi Laboratory), creator of the legendary **Synth1** (2002).
 * Architecture modeled on the hardware **Clavia Nord Lead 2**.
 * Built with the [JUCE Framework](https://juce.com).
@@ -189,5 +189,5 @@ On macOS you can create the Xcode project from the Projucer UI, then open the ge
 > Synth1 is a software instrument created and owned by Ichiro Toda / Daichi Laboratory. Clavia and Nord Lead are registered trademarks of Clavia DMI AB.
 > **OpenSynth1** is an independent, non-commercial, open-source educational recreation and is not affiliated with, endorsed by, or connected to Ichiro Toda, Daichi Laboratory, or Clavia DMI AB.
 
-## 📄 License
+## License
 MIT License. See `LICENSE` for details.
