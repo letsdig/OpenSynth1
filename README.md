@@ -179,6 +179,16 @@ On macOS you can create the Xcode project from the Projucer UI, then open the ge
 
 ---
 
+## Documentation & User Manual
+
+Since OpenSynth1 is modeled on Ichiro Toda's classic Synth1 workflow, the original Synth1 documentation serves as the complete parameter and sound design reference:
+
+* **[Synth1 Complete Illustrated User Manual (PDF)](https://sound.eti.pg.gda.pl/student/eim/doc/Synth1.pdf)** (*Compiled by Zoran Nikolic*)
+* **[Synth1 Interactive Web Guide (Robert Heaton)](https://robertheaton.com/2019/04/21/synth1-unofficial-manual/)**
+* For full architectural details, see [documentation.md](documentation.md).
+
+---
+
 ## Credits & Disclaimer
 * Inspired by **Ichiro Toda** (Daichi Laboratory), creator of the legendary **Synth1** (2002).
 * Architecture modeled on the hardware **Clavia Nord Lead 2**.
